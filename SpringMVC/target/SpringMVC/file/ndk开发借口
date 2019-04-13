@@ -1,0 +1,9 @@
+
+jclass (*GetObjectClass)(JNIENV *,jobject);
+//找到对象实例所对应的class对象
+
+
+代码实现
+
+JNIEXPORT void JNICALL Java_text_hjd_com_fang_demo_changeName(JNIENV *env)
+

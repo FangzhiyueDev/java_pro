@@ -1,0 +1,19 @@
+1.android项目可能还需要开发一个
+2.react-native 
+3.webapp
+4.bootstrap网站开发   pc的
+5.python网站开发 
+6.微信小程序
+
+
+
+目前自己编写的有   
+1.pc的网站   BLog   music  
+移动网站     GF 
+
+app:  Rice1.0   Rice2.0  securityMenager  图书馆检索   weiWeather   菜鸟裹裹  lifetutor(不要了)
+
+
+
+
+
