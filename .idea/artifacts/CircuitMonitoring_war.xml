@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CircuitMonitoring:war">
+    <output-path>$PROJECT_DIR$/CircuitMonitoring/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>CircuitMonitoring</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="CircuitMonitoring.war">
+      <element id="artifact" artifact-name="CircuitMonitoring:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+    <!--
+    spring-mvc的配置文档
+
+    设置自动扫描controller下面大有@controller的控制类
+    -->
+    <context:component-scan base-package="com.fang.demo.controller"></context:component-scan>
+
+    <!--
+    自动扫描注解
+    -->
+    <context:component-scan base-package="com.fang.demo.service"></context:component-scan>
+
+
+    <!--
+        这个/代表的是工程的root目录也就是webapp  代表的是该目录下面的文件单独处理。不需要通过dispatchServlet的处理
+
+
+        location元素表示webapp目录下的static包下的所有文件；
+        mapping元素表示以/static开头的所有请求路径，如/static/a 或者/static/a/b；
+    -->
+
+    <mvc:resources location="/img/" mapping="/img/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/html/" mapping="/html/**"/>
+    <!--
+    这个tag的作用是使用了另一个servlet，而不是DispatchServlet进行调派
+    conversion-service 设置了日期转换
+    -->
+    <!--<mvc:annotation-driven conversion-service="conversionService"/>-->
+    <mvc:annotation-driven/>
+    <mvc:default-servlet-handler/>
+    <!--如果不配置这个，还是有问题，所以 这个必须加上-->
+
+
+    <!--配置视图解析器
+        所有的jso页面都在/WEB-INF/jsp页面下
+        如果没有设置这个解析器，就需要编写全路径名
+    -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+
+    <!--
+        定义的转换器，用来进行时间的转换
+        converter
+    -->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.fang.demo.converter.MyConverter">
+                    <constructor-arg type="java.lang.String" value="MM-dd-yyyy"></constructor-arg>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="conversionService1" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <bean class="com.fang.demo.formatter.DateFormatter">
+                    <constructor-arg type="java.lang.String" value="MM-dd-yyyy"></constructor-arg>
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+    <!--
+    为Formatter配置的扫描
+    -->
+    <context:component-scan base-package="com.fang.demo.formatter"></context:component-scan>
+
+    <!--同样需要定义<mvc:annotation-driven的conversion-service-->
+    <!--<mvc:annotation-driven conversion-service="conversionService1"/>-->
+
+
+    <!--
+
+        配置验证器错误信息提示文件
+
+    -->
+
+    <bean id="meassageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/errorMessage/errors"></property>
+
+    </bean>
+
+
+</beans>

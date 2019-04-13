@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class InputCode {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);// ´´½¨ÊäÈëÁ÷É¨ÃèÆ÷
-        System.out.println("ÇëÊäÈëÄãµÄÉí·İÖ¤ºÅ£º");// ÌáÊ¾ÓÃ»§ÊäÈë
-        String line = scanner.nextLine();// »ñÈ¡ÓÃ»§ÊäÈëµÄÒ»ĞĞÎÄ±¾
-        // ´òÓ¡¶ÔÊäÈëÎÄ±¾µÄÃèÊö
-        System.out.println("Ô­À´ÄãÉí·İÖ¤ºÅÊÇ" + line.length() + "Î»Êı×ÖµÄ°¡");
+        Scanner scanner = new Scanner(System.in);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½
+        System.out.println("è¯·è¾“å…¥");// ï¿½ï¿½Ê¾ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
+        String line = scanner.nextLine();// ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä±ï¿½
+        // ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        System.out.println("ä½ è¾“å…¥çš„å†…å®¹" + line.length() + "");
     }
 }

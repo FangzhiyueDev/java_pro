@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script>
+
+        let url = "../addUser";
+
+        var params = {
+            name: "fang",
+            password: "xiaodong"
+        }
+
+
+        function sendAjax() {
+            ajax(url, params, function (obj) {
+                alert("提交数据结束");
+            }, "application/json");
+        }
+
+
+        function ajax(url, params, callback, contentType) {
+
+            var ajaxOptions = {
+                url: url,
+                data: params,
+                type: "POST",
+                dataType: "json",
+                success: function (res) {
+                    callback(res);
+                },
+                error: function (e) {
+                    callback({onsuccess: false, description: "失效"});
+                }
+            }
+
+            if (contentType != null) {
+                ajaxOptions = $.extend(ajaxOptions, {contentType: contentType})
+            }
+
+            $.ajax(ajaxOptions);
+
+        }
+
+
+    </script>
+</head>
+<body>
+<button style="width: 100px;height: 35px;background: #ccc" id="btn">点击发送</button>
+</body>
+
+
+<script>
+
+    document.querySelector("#btn").addEventListener("click", function () {
+        sendAjax()
+    })
+
+
+</script>
+
+</html>
