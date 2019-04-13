@@ -7,9 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * spring 的表单标签的学习的请求处理类
+ */
+
 @Controller
 public class FormTagControll {
-
 
     @RequestMapping(value = "/userInput")
     public String InputUser(Model model, @RequestParam String name, @RequestParam String password) {

@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+/**
+ * 书籍管理的测试demo
+ * 这个demo只是实现了spring-mvc的整合,并没有整合mybatis,
+ */
 @Controller
 public class BookController {
 

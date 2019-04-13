@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+
+/**
+ * 产品输入与保存的demo实现
+ */
+
 @Controller
 public class ProdutController {
 
@@ -26,7 +31,7 @@ public class ProdutController {
         if (bindingResult.hasErrors()) {
 
             FieldError fieldError = bindingResult.getFieldError();
-            //报错,类型不匹配
+
             System.out.print("code" + fieldError.getCode() + "\n");
             System.out.print("product=" + product);
 

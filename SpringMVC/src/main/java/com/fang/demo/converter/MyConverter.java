@@ -8,6 +8,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+/**
+ * spring的转换器
+ */
+
 public class MyConverter implements Converter<String, Date> {
 
 

@@ -5,8 +5,6 @@
 <web-app>
 
     <display-name>Archetype Created Web Application</display-name>
-
-
     <!--<servlet-mapping>-->
     <!--<servlet-name>default</servlet-name>-->
     <!--<url-pattern>*.css</url-pattern>-->
@@ -58,5 +56,37 @@
         -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+
+    <!--
+    编码过滤器
+    -->
+
+    <filter>
+        <filter-name>characterEncoding</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--
+        加载spring
+    -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-para
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
 
 </web-app>

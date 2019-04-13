@@ -15,35 +15,60 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * 这个是 我在学习springmvc的第一个测试controller,里面都是一些基础的知识
+ */
+
 @Controller
 public class FirstControll {
 
+
+    /**
+     * 返回字符串
+     * 逻辑视图名
+     * Controller类方法返回字符串可以指定逻辑视图名，通过视图解析器解析为物理视图地址。
+     *
+     * @param request
+     * @param response
+     * @throws IOException
+     */
     @RequestMapping(value = "/center", method = RequestMethod.GET)
     public void getData(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         System.out.print("调用数据===========================>");
-        /**
-         返回字符串
-         逻辑视图名
-         Controller类方法返回字符串可以指定逻辑视图名，通过视图解析器解析为物理视图地址。
-         */
         PrintWriter writer = response.getWriter();
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
         writer.write("{\"id\":\"123\"}");
     }
 
-
+    /**
+     * 通过逻辑的视图名,返回相应的视图
+     *
+     * @param request
+     * @param response
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/one", method = RequestMethod.GET)
     public String getData1(HttpServletRequest request, HttpServletResponse response, Model model) {
 
         return "index";//ok
     }
 
+    /**
+     * spring的注解实现的依赖注入的功能
+     */
     @Autowired
     private UserServiceImpl userService;
 
 
+    /**
+     * 返回逻辑视图名的视图
+     *
+     * @param model mode的作用是携带传递视图的参数
+     * @return
+     */
     @RequestMapping(value = "/allUser", method = RequestMethod.GET)
     public String getAllUser(Model model) {
 
@@ -52,14 +77,22 @@ public class FirstControll {
         return "allUser";
     }
 
-
+    /**
+     * 同上面一样
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/allUserData", method = RequestMethod.GET)
     public String getAllUserData(Model model) {
         model.addAttribute("user", userService.getAllUser());
         return "allUser";
     }
 
-
+    /**
+     * @param redirectAttributes 用于定向添加属性的对象,重定向导致mode失效,通过这个对象传递数据
+     * @return
+     */
     @RequestMapping(value = "/allUserData1", method = RequestMethod.GET)
     public String getAllUserData1(RedirectAttributes redirectAttributes) {
 //        model.addAttribute("user", userService.getAllUser());
@@ -82,19 +115,18 @@ public class FirstControll {
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public String addUser(RedirectAttributes redirectAttributes, HttpServletRequest request) {
 //        redirectAttributes.addAttribute("user", new User(request.getParameter("name"), request.getParameter("password")));
-
         return "redirect:./index.jsp";
 
         /**
          * index.jsp位于项目的顶层，与当前访问级别一致，所以使用的是./的形式访问
          */
-
     }
 
 
     /**
      * 使用路径变量h
      * http://localhost:8080/SpringMVC_war/addUser/2?user=fang&password=wwqwewef
+     * 使用路径变量的时候必须存在一个参数,这个参数的作用就是那个路径变量,路径变量不限定值的类型,
      *
      * @param model
      * @return
