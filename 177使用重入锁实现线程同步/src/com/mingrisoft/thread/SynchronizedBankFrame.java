@@ -67,7 +67,7 @@ public class SynchronizedBankFrame extends JFrame {
         contentPane.add(buttonPanel, BorderLayout.SOUTH);
         
         JButton startButton = new JButton("\u5F00\u59CB\u5B58\u94B1");
-        startButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        startButton.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 do_button_actionPerformed(arg0);
@@ -84,7 +84,7 @@ public class SynchronizedBankFrame extends JFrame {
         thread1Panel.setLayout(new BorderLayout(0, 0));
         
         JLabel thread1Label = new JLabel("\u4E00\u53F7\u7EBF\u7A0B");
-        thread1Label.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        thread1Label.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         thread1Label.setHorizontalAlignment(SwingConstants.CENTER);
         thread1Panel.add(thread1Label, BorderLayout.NORTH);
         
@@ -92,7 +92,7 @@ public class SynchronizedBankFrame extends JFrame {
         thread1Panel.add(thread1ScrollPane, BorderLayout.CENTER);
         
         thread1TextArea = new JTextArea();
-        thread1TextArea.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        thread1TextArea.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         thread1ScrollPane.setViewportView(thread1TextArea);
         
         JPanel thread2Panel = new JPanel();
@@ -100,7 +100,7 @@ public class SynchronizedBankFrame extends JFrame {
         thread2Panel.setLayout(new BorderLayout(0, 0));
         
         JLabel thread2Label = new JLabel("\u4E8C\u53F7\u7EBF\u7A0B");
-        thread2Label.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        thread2Label.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         thread2Label.setHorizontalAlignment(SwingConstants.CENTER);
         thread2Panel.add(thread2Label, BorderLayout.NORTH);
         
@@ -108,7 +108,7 @@ public class SynchronizedBankFrame extends JFrame {
         thread2Panel.add(thread2ScrollPane, BorderLayout.CENTER);
         
         thread2TextArea = new JTextArea();
-        thread2TextArea.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        thread2TextArea.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         thread2ScrollPane.setViewportView(thread2TextArea);
     }
     
@@ -134,25 +134,25 @@ public class SynchronizedBankFrame extends JFrame {
             for (int i = 0; i < 10; i++) {
                 bank.deposit(10);
                 String text = textArea.getText();
-                textArea.setText(text + "ÕË»§µÄÓà¶îÊÇ£º" + bank.getAccount() + "\n");
+                textArea.setText(text + "ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç£ï¿½" + bank.getAccount() + "\n");
             }
         }
     }
     
     private class Bank {
-        private int account = 100;// ÕË»§µÄ³õÊ¼½ð¶îÊÇ100
-        private Lock lock = new ReentrantLock();// ´´½¨ÖØÈëËø¶ÔÏó
+        private int account = 100;// ï¿½Ë»ï¿½ï¿½Ä³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½100
+        private Lock lock = new ReentrantLock();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         
         public void deposit(int money) {
-            lock.lock();// ´ò¿ªËø
+            lock.lock();// ï¿½ï¿½ï¿½ï¿½
             try {
                 account += money;
             } finally {
-                lock.unlock();// ¹Ø±ÕËø
+                lock.unlock();// ï¿½Ø±ï¿½ï¿½ï¿½
             }
         }
         
-        public int getAccount() {// ²é¿´Óà¶î
+        public int getAccount() {// ï¿½é¿´ï¿½ï¿½ï¿½
             return account;
         }
     }

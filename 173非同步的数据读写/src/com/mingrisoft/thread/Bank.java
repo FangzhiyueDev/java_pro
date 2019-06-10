@@ -1,13 +1,13 @@
 package com.mingrisoft.thread;
 
 public class Bank {
-    private int account = 100;// ¼ÙÉèÕË»§µÄ³õÊ¼½ğ¶îÊÇ100
-    
-    public void deposit(int money) {// ÏòÕË»§´æÇ®µÄ·½·¨
+    private int account = 100;// ä½™é¢100
+
+    public void deposit(int money) {// ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Ç®ï¿½Ä·ï¿½ï¿½ï¿½
         account += money;
     }
-    
-    public int getAccount() {// »ñµÃÕË»§½ğ¶îµÄ·½·¨
+
+    public int getAccount() {// ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
         return account;
     }
 }

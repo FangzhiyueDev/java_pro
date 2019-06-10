@@ -18,15 +18,15 @@ import java.awt.Font;
 import javax.swing.UIManager;
 
 public class SynchronizedBankFrame extends JFrame {
-    
+
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 2671056183299397274L;
     private JPanel contentPane;
     private JTextArea thread1TextArea;
     private JTextArea thread2TextArea;
-    
+
     /**
      * Launch the application.
      */
@@ -47,7 +47,7 @@ public class SynchronizedBankFrame extends JFrame {
             }
         });
     }
-    
+
     /**
      * Create the frame.
      */
@@ -59,93 +59,107 @@ public class SynchronizedBankFrame extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(new BorderLayout(0, 0));
-        
+
         JPanel buttonPanel = new JPanel();
         contentPane.add(buttonPanel, BorderLayout.SOUTH);
-        
+
         JButton startButton = new JButton("\u5F00\u59CB\u5B58\u94B1");
-        startButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        startButton.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 do_button_actionPerformed(arg0);
             }
         });
         buttonPanel.add(startButton);
-        
+
         JPanel processPanel = new JPanel();
         contentPane.add(processPanel, BorderLayout.CENTER);
         processPanel.setLayout(new GridLayout(1, 2, 5, 5));
-        
+
         JPanel thread1Panel = new JPanel();
         processPanel.add(thread1Panel);
         thread1Panel.setLayout(new BorderLayout(0, 0));
-        
+
         JLabel thread1Label = new JLabel("\u4E00\u53F7\u7EBF\u7A0B");
-        thread1Label.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        thread1Label.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         thread1Label.setHorizontalAlignment(SwingConstants.CENTER);
         thread1Panel.add(thread1Label, BorderLayout.NORTH);
-        
+
         JScrollPane thread1ScrollPane = new JScrollPane();
         thread1Panel.add(thread1ScrollPane, BorderLayout.CENTER);
-        
+
         thread1TextArea = new JTextArea();
-        thread1TextArea.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        thread1TextArea.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         thread1ScrollPane.setViewportView(thread1TextArea);
-        
+
         JPanel thread2Panel = new JPanel();
         processPanel.add(thread2Panel);
         thread2Panel.setLayout(new BorderLayout(0, 0));
-        
+
         JLabel thread2Label = new JLabel("\u4E8C\u53F7\u7EBF\u7A0B");
-        thread2Label.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        thread2Label.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         thread2Label.setHorizontalAlignment(SwingConstants.CENTER);
         thread2Panel.add(thread2Label, BorderLayout.NORTH);
-        
+
         JScrollPane thread2ScrollPane = new JScrollPane();
         thread2Panel.add(thread2ScrollPane, BorderLayout.CENTER);
-        
+
         thread2TextArea = new JTextArea();
-        thread2TextArea.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+        thread2TextArea.setFont(new Font("Î¢ï¿½ï¿½ï¿½Åºï¿½", Font.PLAIN, 16));
         thread2ScrollPane.setViewportView(thread2TextArea);
     }
-    
+
     protected void do_button_actionPerformed(ActionEvent arg0) {
+
+        /**
+         * ä½¿ç”¨çš„æ˜¯ä¸€ä¸ªå¯¹è±¡
+         */
         Bank bank = new Bank();
         Thread thread1 = new Thread(new Transfer(bank, thread1TextArea));
         thread1.start();
         Thread thread2 = new Thread(new Transfer(bank, thread2TextArea));
         thread2.start();
     }
-    
+
     private class Transfer implements Runnable {
         private Bank bank;
         private JTextArea textArea;
-        
-        public Transfer(Bank bank, JTextArea textArea) {// ³õÊ¼»¯±äÁ¿
+
+        public Transfer(Bank bank, JTextArea textArea) {// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             this.bank = bank;
             this.textArea = textArea;
         }
-        
-        public void run() {
-            for (int i = 0; i < 10; i++) {// ÏòÕË»§ÖĞ´æÈë10´ÎÇ®
-                bank.deposit(10);// ÏòÕË»§ÖĞ´æÈë10¿éÇ®
-                String text = textArea.getText();// »ñµÃÎÄ±¾ÓòÖĞµÄÎÄ±¾
-                // ÔÚÎÄ±¾ÓòÖĞÏÔÊ¾ÕË»§ÖĞµÄÓà¶î
-                textArea.setText(text + "ÕË»§µÄÓà¶îÊÇ£º" + bank.getAccount() + "\n");
+
+        public void run() {//
+            for (int i = 0; i < 1000; i++) {// ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½10ï¿½ï¿½Ç®
+                    bank.deposit(10);// ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½10ï¿½ï¿½Ç®
+                    String text = textArea.getText();// ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½Ä±ï¿½
+                    // ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ë»ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½
+                    textArea.setText(text + "è´¦æˆ·ä½™é¢" + bank.getAccount() + "\n");
             }
         }
     }
-    
+
     private class Bank {
-        private int account = 100;// Ã¿¸öÕË»§µÄ³õÊ¼½ğ¶îÊÇ100Ôª
-        
-        public synchronized void deposit(int money) {// ÏòÕË»§ÖĞ´æÈëmoneyÔª
+        private int account = 100;// Ã¿ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ä³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½100Ôª
+
+        /**
+         * ä¿®é¥°å®ä¾‹æ–¹æ³•ï¼Œä½œç”¨äºå½“å‰å®ä¾‹åŠ é”ï¼Œè¿›å…¥åŒæ­¥ä»£ç å‰è¦è·å¾—å½“å‰å®ä¾‹çš„é”
+         * <p>
+         * é‚£ä¹ˆä»£è¡¨ç€å¦‚æœä½¿ç”¨çš„è¯¥ç§æ–¹æ³•ï¼Œå¿…é¡»ä¿è¯åªèƒ½æœ‰ä¸€ä¸ªå®ä¾‹ï¼Œä¸”åœ¨ä¸€ä¸ªå®ä¾‹å‚¨å­˜åœ¨å¤šçº¿ç¨‹æ“ä½œçš„æ—¶å€™ä¿è¯å…¶æ“ä½œçš„åŸå­æ€§
+         *
+         * è¿™ä¸ªæ–¹å¼å®ç°çš„é”å¿…é¡»ä¿è¯æœ‰ä¸”åªæœ‰ä¸€ä¸ªå¯¹è±¡  ï¼Œä¸åŒå¯¹è±¡ä¹‹å‰çš„é”æ˜¯ä¸åŒçš„
+         *
+         *
+         * @param money
+         */
+        public synchronized void deposit(int money) {// ï¿½ï¿½ï¿½Ë»ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½moneyÔª
             account += money;
         }
-        
-        public int getAccount() {// ²éÑ¯ÕË»§Óà¶î
+
+        public int getAccount() {// ï¿½ï¿½Ñ¯ï¿½Ë»ï¿½ï¿½ï¿½ï¿½
             return account;
         }
     }
-    
+
 }

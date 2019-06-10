@@ -5,17 +5,17 @@ import javax.swing.JTextArea;
 public class Transfer implements Runnable {
     private Bank bank;
     private JTextArea textArea;
-    
-    public Transfer(Bank bank, JTextArea textArea) {// ÀûÓÃ¹¹Ôì·½·¨³õÊ¼»¯±äÁ¿
+
+    public Transfer(Bank bank, JTextArea textArea) {// ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ì·½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         this.bank = bank;
         this.textArea = textArea;
     }
-    
+
     public void run() {
-        for (int i = 0; i < 10; i++) {// Ñ­»·10´ÎÏòÕË»§´æÇ®
-            bank.deposit(10);// ÏòÕË»§´æÈë10¿éÇ®
-            String text = textArea.getText();// »ñµÃÎÄ±¾ÓòÄÚÈÝ
-            textArea.setText(text + "ÕË»§µÄÓà¶îÊÇ£º" + bank.getAccount() + "\n");
+        for (int i = 0; i < 10; i++) {// Ñ­ï¿½ï¿½10ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Ç®
+            bank.deposit(10);// ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½Ç®
+            String text = textArea.getText();// ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            textArea.setText(text + "ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç£ï¿½" + bank.getAccount() + "\n");
         }
     }
 }

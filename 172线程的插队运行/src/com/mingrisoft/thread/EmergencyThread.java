@@ -10,7 +10,7 @@ public class EmergencyThread implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("½ô¼±Çé¿ö£º" + i + "ºÅ³µ³ö·¢£¡");
+            System.out.println("ç´§æ€¥çº¿ç¨‹" + i + "è¿è¡Œ");
         }
     }
 }

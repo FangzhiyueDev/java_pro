@@ -1,5 +1,5 @@
 package com.mingrisoft.proxy;
 
 public interface Seller {
-    void sell();// ¼òµ¥µÄ²âÊÔ·½·¨
+    void sell();// ï¿½òµ¥µÄ²ï¿½ï¿½Ô·ï¿½ï¿½ï¿½
 }
